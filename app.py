@@ -18,7 +18,7 @@ class Todo(db.Model):
         return f"{self.sno} - {self.title}"
 
 @app.route('/', methods=['GET','POST'])
-def hello_world():
+def note_app():
     if request.method=="POST":
         title = request.form['title']
         desc = request.form['desc']
@@ -39,7 +39,7 @@ def deletesno():
         Todo.query.filter(Todo.sno == dsno).delete()
         db.session.commit()
     
-    return redirect(url_for('hello_world'))
+    return redirect(url_for('note_app'))
         
         
 
